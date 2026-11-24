@@ -479,6 +479,28 @@ def build_feed_xml(
     feed_url = f"{base}/feed.xml"
     home_url = f"{base}/"
 
+    sorted_episodes = sorted(
+        episodes,
+        key=lambda ep: (ep.pub_dt.timestamp(), ep.date),
+        reverse=True,
+    )
+
+    published_episodes: list[tuple[Episode, Path, int]] = []
+    for episode in sorted_episodes:
+        mp3_path = episodes_dir / f"{episode.date}.mp3"
+        if not mp3_path.is_file():
+            continue
+        file_size = mp3_path.stat().st_size
+        if file_size <= 0:
+            continue
+        published_episodes.append((episode, mp3_path, file_size))
+
+    last_build_date = (
+        published_episodes[0][0].pub_date_str
+        if published_episodes
+        else email.utils.format_datetime(datetime.now(LOCAL_TZ))
+    )
+
     rss = ET.Element("rss", {"version": "2.0"})
     channel = ET.SubElement(rss, "channel")
 
@@ -491,9 +513,7 @@ def build_feed_xml(
     )
     ET.SubElement(channel, "language").text = PODCAST_LANGUAGE
     ET.SubElement(channel, "description").text = PODCAST_DESCRIPTION
-    ET.SubElement(channel, "lastBuildDate").text = email.utils.format_datetime(
-        datetime.now(LOCAL_TZ)
-    )
+    ET.SubElement(channel, "lastBuildDate").text = last_build_date
 
     ET.SubElement(channel, _ns(ITUNES_NS, "author")).text = PODCAST_AUTHOR
     ET.SubElement(channel, _ns(ITUNES_NS, "summary")).text = PODCAST_DESCRIPTION
@@ -512,19 +532,7 @@ def build_feed_xml(
     edu_cat = ET.SubElement(channel, _ns(ITUNES_NS, "category"), {"text": "Education"})
     ET.SubElement(edu_cat, _ns(ITUNES_NS, "category"), {"text": "Language Learning"})
 
-    sorted_episodes = sorted(
-        episodes,
-        key=lambda ep: (ep.pub_dt.timestamp(), ep.date),
-        reverse=True,
-    )
-
-    for episode in sorted_episodes:
-        mp3_path = episodes_dir / f"{episode.date}.mp3"
-        if not mp3_path.is_file():
-            continue
-        file_size = mp3_path.stat().st_size
-        if file_size <= 0:
-            continue
+    for episode, mp3_path, file_size in published_episodes:
 
         item = ET.SubElement(channel, "item")
         ET.SubElement(item, "title").text = episode.title

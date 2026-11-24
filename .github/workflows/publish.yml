@@ -2,7 +2,10 @@ name: Publish Daily Italian Podcast
 
 on:
   schedule:
-    - cron: "15 9 * * *" # 4:15 AM EST / 5:15 AM EDT (after 4:00 AM local Gemini schedule)
+    - cron: "17 4 * * *"
+      timezone: "America/Indiana/Indianapolis"
+    - cron: "47 4 * * *"
+      timezone: "America/Indiana/Indianapolis"
   workflow_dispatch:
 
 permissions:
