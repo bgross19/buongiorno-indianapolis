@@ -6,7 +6,7 @@
     <atom:link href="https://bgross19.github.io/buongiorno-indianapolis/feed.xml" rel="self" type="application/rss+xml" />
     <language>it-IT</language>
     <description>Il tuo briefing mattutino quotidiano in italiano da Indianapolis: meteo, agenda e uno spunto per iniziare la giornata.</description>
-    <lastBuildDate>Mon, 23 Nov 2026 16:18:35 -0500</lastBuildDate>
+    <lastBuildDate>Tue, 24 Nov 2026 06:38:44 -0500</lastBuildDate>
     <itunes:author>Brian Gross</itunes:author>
     <itunes:summary>Il tuo briefing mattutino quotidiano in italiano da Indianapolis: meteo, agenda e uno spunto per iniziare la giornata.</itunes:summary>
     <itunes:type>episodic</itunes:type>
@@ -23,6 +23,18 @@
     <itunes:category text="Education">
       <itunes:category text="Language Learning" />
     </itunes:category>
+    <item>
+      <title>Martedì 24 novembre 2026 — Un Red Day sereno prima della pausa</title>
+      <description>Meteo a Indianapolis, orario speciale Red Day a Cathedral senza classi regolari di latino, allenamento autonomo della squadra e preparazione alla pausa del Ringraziamento.</description>
+      <itunes:summary>Meteo a Indianapolis, orario speciale Red Day a Cathedral senza classi regolari di latino, allenamento autonomo della squadra e preparazione alla pausa del Ringraziamento.</itunes:summary>
+      <pubDate>Tue, 24 Nov 2026 04:00:00 -0500</pubDate>
+      <guid isPermaLink="false">buongiorno-indianapolis-2026-11-24</guid>
+      <enclosure url="https://bgross19.github.io/buongiorno-indianapolis/episodes/2026-11-24.mp3" length="740592" type="audio/mpeg" />
+      <itunes:duration>123</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:image href="https://bgross19.github.io/buongiorno-indianapolis/cover.jpg" />
+    </item>
     <item>
       <title>Lunedì 23 novembre 2026 — L'inizio della settimana del Ringraziamento</title>
       <description>Meteo a Indianapolis, orario Green Day a Cathedral con classi di latino, Counseling Meeting, allenamento di squadra e Thanks for Giving Open House.</description>
